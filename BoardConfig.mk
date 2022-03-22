@@ -4,9 +4,6 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-# Inherit from sm8150-common
-include device/xiaomi/sm8150-common/BoardConfigCommon.mk
-
 DEVICE_PATH := device/xiaomi/vayu
 
 BUILD_BROKEN_DUP_RULES := true
@@ -24,8 +21,11 @@ TARGET_RECOVERY_DEVICE_MODULES := init_xiaomi_vayu
 # Kernel
 TARGET_KERNEL_CONFIG := vendor/vayu_defconfig
 
-# Properties
-TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
+# Partitions
+TARGET_USE_DYNAMIC_PARTITIONS := true
 
-# Inherit from the proprietary version
+# Inherit from sm8150-common
+include device/xiaomi/sm8150-common/BoardConfigCommon.mk
+
+# Inherit from proprietary version
 include vendor/xiaomi/vayu/BoardConfigVendor.mk
